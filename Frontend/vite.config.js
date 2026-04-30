@@ -17,8 +17,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   preview: {
-  host: true,
-  port: 8080,
-  allowedHosts: "all"
-}
+    host: true,
+    port: 8080,
+    allowedHosts: [
+      "resilient-nourishment-production-cac2.up.railway.app"
+    ]
+  }
 })
