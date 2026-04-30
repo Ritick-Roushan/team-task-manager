@@ -17,12 +17,8 @@ const app = express();
 // ✅ CORS FIX
 app.use(cors({
   origin: "https://resilient-nourishment-production-cac2.up.railway.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-
-// ✅ Handle preflight requests properly
-app.options("/*", cors());
 
 app.use(express.json());
 
