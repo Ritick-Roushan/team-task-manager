@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import connectDB from "./config/db.js";
 
@@ -13,21 +14,15 @@ connectDB();
 
 const app = express();
 
-import cors from "cors";
 
 const corsOptions = {
   origin: "https://resilient-nourishment-production-cac2.up.railway.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 };
 
-// ✅ Apply CORS
 app.use(cors(corsOptions));
 
-// ✅ Handle preflight manually (VERY IMPORTANT)
-app.options("/api/*", cors(corsOptions));
-
+// ✅ Body parser
 app.use(express.json());
 
 // ✅ Routes
@@ -36,7 +31,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
-// ✅ Health check (optional but useful)
+// ✅ Health check
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
