@@ -1,6 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors";
 
 import connectDB from "./config/db.js";
 
@@ -14,11 +13,20 @@ connectDB();
 
 const app = express();
 
-// ✅ CORS FIX
-app.use(cors({
+import cors from "cors";
+
+const corsOptions = {
   origin: "https://resilient-nourishment-production-cac2.up.railway.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
-}));
+};
+
+// ✅ Apply CORS
+app.use(cors(corsOptions));
+
+// ✅ Handle preflight manually (VERY IMPORTANT)
+app.options("/api/*", cors(corsOptions));
 
 app.use(express.json());
 
