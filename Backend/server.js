@@ -14,7 +14,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: [
+    "https://resilient-nourishment-production-cac2.up.railway.app"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
