@@ -16,12 +16,8 @@ const app = express();
 import cors from "cors";
 
 app.use(cors({
-  origin: "https://resilient-nourishment-production-cac2.up.railway.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: "*"
 }));
-
-app.options("*", cors());
 
 app.use(express.json());
 
