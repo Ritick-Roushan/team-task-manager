@@ -1,98 +1,88 @@
- 🚀 Team Task Manager (Full-Stack)
+🚀 Team Task Manager (Full-Stack)
 
-A modern full-stack web application that allows teams to **create projects, assign tasks, and track progress** with **role-based access control (Admin & Member)**.
+🌐 Live Application:
+https://resilient-nourishment-production-cac2.up.railway.app/
 
----
-
- 📌 Overview
-
-The **Team Task Manager** is designed to simulate a real-world team collaboration system where:
-
-* Admins manage projects and assign tasks
-* Members work on assigned tasks and update progress
-* Tasks are tracked with statuses and deadlines
-
-This project demonstrates **full-stack development skills**, including authentication, API design, and role-based authorization.
+(API connected to deployed backend)
 
 ---
 
- ✨ Features
+📌 Overview
 
- 🔐 Authentication
+The Team Task Manager is a full-stack web application that enables teams to manage projects, assign tasks, and track progress using role-based access control (Admin & Member).
+
+It simulates a real-world collaboration system where:
+
+* Admins create and manage projects
+* Tasks are assigned to team members
+* Members update task progress
+* Work is tracked using status and deadlines
+
+---
+
+✨ Key Features
+
+🔐 Authentication
 
 * User Signup & Login
 * JWT-based authentication
-* Secure API access with token validation
+* Secure API access with protected routes
 
----
+👥 Role-Based Access Control
 
- 👥 Role-Based Access Control
-
- 👑 Admin
+👑 Admin:
 
 * Create & delete projects
 * Create, assign, and delete tasks
 * View all tasks across users
 
- 👤 Member
+👤 Member:
 
 * View assigned tasks only
 * Update task status (To Do → In Progress → Done)
 
 ---
 
- 📁 Project Management
+📁 Project Management
 
-* Create multiple projects
-* View all projects (shared visibility)
+* Create and manage multiple projects
+* Shared visibility across users
 * Delete projects (Admin only)
 
----
-
- 📝 Task Management
+📝 Task Management
 
 * Create tasks with:
 
-  * Title
-  * Description
-  * Project
+  * Title, Description
+  * Project association
   * Assigned user
   * Due date
-* Assign tasks to any team member
-* Track status updates
+* Assign tasks to team members
+* Track task status updates
 * Delete tasks (Admin only)
 
----
+📊 Dashboard
 
- 📊 Dashboard
-
-* View all tasks (Admin)
-* View assigned tasks (Member)
+* Admin: View all tasks
+* Member: View assigned tasks
 * Track progress and deadlines
 
----
+🌐 Landing Page
 
- 🌐 Landing Page
-
-* Professional homepage with:
-
-  * Header & navigation
-  * Hero section
-  * Features overview
-  * Footer
+* Clean UI with navigation, features overview, and footer
 
 ---
 
- 🛠️ Tech Stack
+🛠️ Tech Stack
 
- Frontend
+Frontend:
 
 * React.js (Vite)
 * Tailwind CSS
 * Axios
 * React Router
 
- Backend
+Backend:
 
 * Node.js
 * Express.js
@@ -101,137 +91,129 @@ This project demonstrates **full-stack development skills**, including authentic
 
 ---
 
- 📂 Folder Structure
+📂 Project Structure
 
-```
 Frontend/
- ├── src/
- │   ├── components/
- │   ├── pages/
- │   ├── context/
- │   ├── services/
- │   └── App.jsx
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── context/
+│   ├── services/
+│   └── App.jsx
 
 Backend/
- ├── controllers/
- ├── models/
- ├── routes/
- ├── middleware/
- └── server.js
-```
-
-   ⚙️ Installation & Setup
-
- 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/Ritick-Roushan/team-task-manager.git
-cd team-task-manager
-```
+├── controllers/
+├── models/
+├── routes/
+├── middleware/
+└── server.js
 
 ---
 
- 2️⃣ Backend Setup
+⚙️ Installation & Setup
 
-```bash
+1️⃣ Clone Repository
+
+git clone https://github.com/Ritick-Roushan/team-task-manager.git
+cd team-task-manager
+
+---
+
+2️⃣ Backend Setup
+
 cd Backend
 npm install
-```
 
-Create `.env` file:
+Create a .env file:
 
-```
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_secret_key
-```
+CORS_ORIGIN=your_cors_origin
 
 Run backend:
 
-```bash
 npm run dev
-```
 
 ---
 
- 3️⃣ Frontend Setup
+3️⃣ Frontend Setup
 
-```bash
 cd Frontend
 npm install
 npm run dev
-```
 
 ---
 
- 🔑 API Highlights
+🔑 API Endpoints
 
-| Method | Endpoint           | Description            |
-| ------ | ------------------ | ---------------------- |
-| POST   | /api/auth/register | Register user          |
-| POST   | /api/auth/login    | Login user             |
-| GET    | /api/projects      | Get all projects       |
-| POST   | /api/projects      | Create project (Admin) |
-| DELETE | /api/projects/:id  | Delete project (Admin) |
-| GET    | /api/tasks         | Get tasks (role-based) |
-| POST   | /api/tasks         | Create task (Admin)    |
-| PUT    | /api/tasks/:id     | Update task status     |
-| DELETE | /api/tasks/:id     | Delete task (Admin)    |
-| GET    | /api/users         | Get all users          |
+POST   /api/auth/register   → Register user
+POST   /api/auth/login      → Login user
+GET    /api/projects        → Get all projects
+POST   /api/projects        → Create project (Admin)
+DELETE /api/projects/:id    → Delete project (Admin)
+GET    /api/tasks           → Get tasks (role-based)
+POST   /api/tasks           → Create task (Admin)
+PUT    /api/tasks/:id       → Update task status
+DELETE /api/tasks/:id       → Delete task (Admin)
+GET    /api/users           → Get all users
 
 ---
 
- 🔒 Security Features
+🔒 Security Features
 
 * JWT Authentication
-* Protected Routes (Frontend & Backend)
-* Role-based API restrictions
-* Secure password hashing
+* Protected routes (frontend & backend)
+* Role-based authorization (RBAC)
+* Password hashing using bcrypt
 
 ---
 
- 🎯 Key Highlights
+🚀 Deployment
 
-* ✔ Full-stack architecture
-* ✔ Clean REST API design
-* ✔ Role-based authorization (RBAC)
-* ✔ Real-world task assignment logic
-* ✔ Responsive UI with Tailwind
-
----
-
- 🚀 Deployment
-
-* Frontend + Backend deployed on **Railway**
+* Frontend and Backend deployed on Railway
 * Fully functional live application
 
+Backend API:
+https://team-task-manager-production-0f5a.up.railway.app
+
 ---
 
- 📌 Future Improvements
+🎯 Key Highlights
 
-* Notifications system
+* Full-stack architecture (React + Node + MongoDB)
+* Clean REST API design
+* Role-based access control system
+* Real-world task management workflow
+* Responsive UI using Tailwind CSS
+
+---
+
+📌 Future Enhancements
+
+* Notification system
 * Team invitations
 * File attachments
-* Advanced dashboard analytics
-* Drag & drop task board
+* Advanced analytics dashboard
+* Drag-and-drop task board
 
 ---
 
-  🙌 Conclusion
+🙌 Conclusion
 
-This project demonstrates a **complete production-level workflow**, including:
+This project demonstrates a complete end-to-end development workflow including:
 
 * Authentication & Authorization
-* API development
+* Backend API design
 * Frontend integration
 * Real-world business logic
 
 ---
 
-  👤 Author
+👤 Author
 
 Ritick Roushan
 Full Stack Developer
 
 ---
 
-⭐ If you like this project, consider giving it a star!
+⭐ Thank you for reviewing this project!
