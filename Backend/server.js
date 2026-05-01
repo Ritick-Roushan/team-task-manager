@@ -14,13 +14,12 @@ connectDB();
 
 const app = express();
 
-
-const corsOptions = {
-  origin: "https://resilient-nourishment-production-cac2.up.railway.app",
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    credentials: true,
+  })
+);
 
 // ✅ Body parser
 app.use(express.json());
