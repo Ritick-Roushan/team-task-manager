@@ -14,15 +14,31 @@ connectDB();
 
 const app = express();
 
-const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173').replace(/['"\s\/]+$/g, '').replace(/^['"\s]+/, '');
+const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173')
+  .replace(/['"\s\/]+$/g, '')
+  .replace(/^['"\s]+/, '');
 
-console.log("Cleaned CORS_ORIGIN:", allowedOrigin); // verify in logs
+// Manually intercept ALL preflight requests first
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200); // Respond immediately to preflight
+  }
+  next();
+});
 
 app.use(cors({
   origin: allowedOrigin,
   credentials: true,
 }));
+
 app.use(express.json());
+
+// ... your routes
 
 // ✅ Routes
 app.use("/api/auth", authRoutes);
