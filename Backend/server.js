@@ -14,28 +14,14 @@ connectDB();
 
 const app = express();
 
-console.log("CORS_ORIGIN from env:", JSON.stringify(process.env.CORS_ORIGIN));
+const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173').replace(/['"\s\/]+$/g, '').replace(/^['"\s]+/, '');
 
-// const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173').replace(/\/$/, '');
+console.log("Cleaned CORS_ORIGIN:", allowedOrigin); // verify in logs
 
-// app.use(cors({
-//   origin: allowedOrigin,
-//   credentials: true,
-// }));
-
-app.options('*', cors({
-  origin: "https://resilient-nourishment-production-cac2.up.railway.app",
+app.use(cors({
+  origin: allowedOrigin,
   credentials: true,
 }));
-
-app.use(
-  cors({
-    origin: "https://resilient-nourishment-production-cac2.up.railway.app",
-    credentials: true,
-  })
-);
-
-// ✅ Body parser
 app.use(express.json());
 
 // ✅ Routes
