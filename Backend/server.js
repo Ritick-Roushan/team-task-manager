@@ -14,7 +14,7 @@ connectDB();
 
 const app = express();
 
-const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173').replace(/\/$/, '');
+const allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:5173').replace(/['"\s\/]+$/g, '').replace(/^['"\s]+/, '');
 
 app.use(cors({
   origin: allowedOrigin,
@@ -23,11 +23,13 @@ app.use(cors({
 
 app.use(express.json());
 
+// ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
+// ✅ Health check
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
